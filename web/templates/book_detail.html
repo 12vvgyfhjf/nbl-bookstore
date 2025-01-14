@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book['title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <h1>{{ book['title'] }}</h1>
+    </header>
+    <main>
+        <h2>Book Details</h2>
+        <p><strong>Title:</strong> {{ book['title'] }}</p>
+        <p><strong>Author:</strong> {{ book['author'] }}</p>
+        <p><strong>Category:</strong> {{ book['category'] }}</p>
+        <p><strong>Description:</strong> {{ book['description'] }}</p>
+        <p><strong>Added on:</strong> {{ book['date_added'] }}</p>
+        <a href="/" class="button">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 NBL Bookstore. All rights reserved.</p>
+    </footer>
+</body>
+</html>

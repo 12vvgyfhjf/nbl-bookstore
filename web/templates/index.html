@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBL Bookstore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <h1>NBL Bookstore</h1>
+        <p>Find your next great read from our collection of books.</p>
+    </header>
+    <main>
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <form method="get" action="/">
+                <input type="text" name="search" placeholder="Search by title or author" value="{{ search_query }}">
+                <button type="submit" class="button">Search</button>
+            </form>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <h2>Filter by Category</h2>
+            <ul>
+                <li><a href="/?category=All">All</a></li>
+                <li><a href="/?category=Early Reader">Early Reader</a></li>
+                <li><a href="/?category=Adult">Adult</a></li>
+                <li><a href="/?category=Economics">Economics</a></li>
+                <li><a href="/?category=History">History</a></li>
+                <li><a href="/?category=Travel">Travel</a></li>
+            </ul>
+        </div>
+
+        <!-- Display Books by Category -->
+        <h2>Books in {{ category }} Category</h2>
+        <div class="book-list">
+            {% for book in books %}
+            <div class="book-card">
+                <h3>{{ book['title'] }}</h3>
+                <p><strong>Author:</strong> {{ book['author'] }}</p>
+                <a href="/books/{{ book['id'] }}" class="button">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Display New Books Added this Month -->
+        <h2>New Books This Month</h2>
+        <div class="new-books">
+            {% for book in new_books %}
+            <div class="book-card new-book">
+                <h3>{{ book['title'] }}</h3>
+                <p><strong>Author:</strong> {{ book['author'] }}</p>
+                <a href="/books/{{ book['id'] }}" class="button">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 NBL Bookstore. All rights reserved.</p>
+    </footer>
+</body>
+</html>
